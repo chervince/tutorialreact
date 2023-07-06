@@ -1,14 +1,18 @@
 import React from "react";
-import Home from "./home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* Autres éléments de votre application */}
-      </header>
-      <Home /> {/* Utilisation du composant Home */}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        {/*path="*" fonctionne si jamais l'url ne correspond à rien de déclaré au dessus */}
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
